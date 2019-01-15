@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetallesPedidoFragment">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/primary"
+        android:id="@+id/viewPrincipal"/>
+
+    <View
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/lblTotalGrande"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:background="@color/primary_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$0.00"
+        android:id="@+id/lblTotalGrande"
+        android:textSize="30sp"
+        android:textColor="@color/divider"
+        android:layout_marginTop="130dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"/>
+
+
+    <TextView
+        android:id="@+id/lblReferenciaDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pedido: 1234"
+        android:textSize="35sp"
+        android:textColor="@color/divider"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha:"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/divider"
+        android:layout_below="@id/lblReferenciaDetalles"
+        android:id="@+id/lblFechaDetalles"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estatus: "
+        android:textSize="20sp"
+        android:textColor="@color/divider"
+        android:id="@+id/lblEstatusDetalle"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/lblFechaDetalles"/>
+
+    <TextView
+        android:id="@+id/lblDescripcionDetalles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detalles del pedido"
+        android:layout_below="@id/viewPrincipal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvDetallesPedido"
+        android:scrollbars="vertical"
+        android:layout_below="@id/lblDescripcionDetalles"
+        android:layout_margin="10dp"
+        >
+
+
+
+    </android.support.v7.widget.RecyclerView>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:layout_below="@id/rvDetallesPedido"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subtotal"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="right"/>
+
+        <TextView
+            android:id="@+id/lblsubTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="right"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IVA"
+            android:layout_gravity="right"/>
+
+        <TextView
+            android:id="@+id/lblIVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:layout_gravity="right"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="right"/>
+
+        <TextView
+            android:id="@+id/lblTotalDetalles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="right"/>
+
+    </GridLayout>
+
+
+
+</RelativeLayout>

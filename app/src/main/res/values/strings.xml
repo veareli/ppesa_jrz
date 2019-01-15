@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">PPESA </string>
+
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+
+    //url servicios
+    <string name="url">http://ppesa.online/android/jrz</string>
+
+
+    //serivicios
+    <string name="consultar_lineas">ConsultaListaLineas</string>
+    <string name="consultar_productos_by_linea">ConsultaListaProductos</string>
+    <string name="consultar_cliente">consulta_cliente</string>
+    <string name="consultar_ultimos_5pedidos">consulta_pedidos</string>
+    <string name="consultar_detalles_pedido">consultar_detalles_pedido</string>
+    <string name="insertar_detalles_pedido">insert_detalles_pedidos</string>
+    <string name="insertar_pedido">insert_pedidos</string>
+    <string name="login_app">login_app</string>
+    <string name="consultar_factor">obtener_factor</string>
+    <string name="consultar_promocion">obtener_promocion</string>
+
+
+    //lineas_activity
+    <string name="lineas_titulo_pantalla">Productos disponibles</string>
+    <string name="lineas_instrucciones">Selecciona una linea</string>
+    <string name="lineas_caseton">Caseton</string>
+    <string name="lineas_placa">Placa</string>
+    <string name="lineas_molduras">Molduras</string>
+    <string name="lineas_bovedilla">Bovedilla</string>
+    <string name="lineas_adhesivos">Adhesivos</string>
+    <string name="lineas_otros">Otros</string>
+
+
+    //login activity
+
+    <string name="usuario">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="sin_registro">¿No tienes usuario?</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

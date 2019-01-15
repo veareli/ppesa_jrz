@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/imgPromo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/promo"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:layout_below="@id/imgPromo"
+        android:id="@+id/lblDescuento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/secondary_text"
+        android:textSize="30sp"
+        android:text="20%"/>
+
+
+    <TextView
+        android:layout_below="@id/lblDescuento"
+        android:id="@+id/lblProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:layout_margin="15dp"
+        android:text="Caseton 50 x 60%"
+        />
+
+    <TextView
+        android:id="@+id/lblCaducidadDes"
+        android:layout_below="@id/lblProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:text="Disponible solo hoy"
+        />
+
+    <TextView
+        android:layout_below="@id/lblCaducidadDes"
+        android:id="@+id/lblCaducidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="23/10/2018"
+        />
+
+
+</RelativeLayout>

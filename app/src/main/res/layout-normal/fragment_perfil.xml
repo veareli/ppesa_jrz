@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="vertical"
+    tools:context=".PerfilFragment">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/primary"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="70dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="85dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                app:contentPaddingTop="15dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingBottom="15dp"
+                android:scrollbars="vertical"
+                app:cardCornerRadius="10dp">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_marginTop="60dp"
+                        android:id="@+id/lblName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/lblTipoCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@id/lblName"
+                        android:gravity="center_horizontal"/>
+
+                    <GridLayout
+                        android:id="@+id/layoutGrid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/lblTipoCliente"
+                        android:columnCount="2"
+                        android:orientation="vertical"
+                        android:rowCount="3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Contacto: "
+                            android:textSize="20dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Direccion: "
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Whatsapp"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/lblContacto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textEnd"
+                            android:text="Prueba "
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/lblDir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Prueba "
+                            android:textAlignment="textStart"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/lblWhatsapp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Prueba"
+                            android:textSize="20dp" />
+
+                    </GridLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Editar informacion"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_below="@id/layoutGrid"
+                        android:padding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/divider"
+                        android:id="@+id/btnEditarInfo"
+                        android:background="@drawable/element_outline"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:id="@+id/lblId"/>
+
+
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

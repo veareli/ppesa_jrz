@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Inicio"
+        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/search"
+        android:title="Buscar"
+        android:icon="@drawable/ic_search"/>
+    <item
+        android:id="@+id/packageB"
+        android:title="Pedidos"
+        android:icon="@drawable/box"/>
+    <item
+        android:id="@+id/promo"
+        android:title="Promos"
+        android:icon="@drawable/ic_promo"/>
+
+</menu>

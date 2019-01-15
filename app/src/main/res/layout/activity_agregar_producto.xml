@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:layout_marginBottom="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Titulo"
+        android:text="Agregar al pedido"
+        android:layout_centerHorizontal="true"
+        android:textSize="35sp"
+        android:textColor="@color/primary"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblDescripcion"
+        android:text="Caseton 50x60x7"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Titulo"
+        android:textSize="30sp"/>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="2"
+        android:layout_below="@id/lblDescripcion"
+        android:id="@+id/grid"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio $"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textAlignment="viewEnd"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblPrecio"
+            android:text="0.00"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/lblDescripcion"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disponibles: "
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblDisponibilidad"
+            android:text="999"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblCant"
+            android:text="Cantidad"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:layout_below="@id/lblDisponibilidad"/>
+
+        <EditText
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtCant"
+            android:layout_below="@id/lblDisponibilidad"
+            android:layout_toRightOf="@id/lblCant"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:inputType="number"
+            />
+
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/grid"
+        android:id="@+id/layout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de entrega:"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/txtFechaEntrega"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true"
+            android:maxLines="1"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar"
+        android:id="@+id/btnAgregar"
+        android:layout_below="@id/layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:id="@+id/btnCancelar"
+        android:layout_below="@id/btnAgregar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+   <!-- <TextView
+        android:id="@+id/linkCheckout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checkout"
+        android:textColor="@color/accent"
+        android:layout_below="@id/btnCancelar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        />-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*El precio ya incluye el descuento"
+        android:layout_below="@id/btnCancelar"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/lblDisclaimer"
+        />
+
+
+
+
+
+
+</RelativeLayout>
