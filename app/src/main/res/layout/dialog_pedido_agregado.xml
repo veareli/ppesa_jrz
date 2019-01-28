@@ -34,6 +34,16 @@
         android:textAlignment="center"
         android:text="En breve nos comunicaremos"/>
 
+    <EditText
+        android:id="@+id/txtComentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:layout_margin="10dp"
+        android:hint="¿Algun comentario? Escribelo aqui"/>
+
 
         <Button
             android:layout_margin="10dp"
@@ -44,4 +54,6 @@
             android:layout_gravity="center"
             android:id="@+id/btnContinuar"
             android:textColor="@color/divider"/>
+
+
 </LinearLayout>

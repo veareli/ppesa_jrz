@@ -312,6 +312,30 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
     }
 
+    private void makeRequestInsertarComentarioPedido(int pedido, String comentario ) {
+
+        String url =getResources().getString(R.string.url)+"/guardar_comentario.php?pedido="+pedido
+                +"&comentario="+comentario;
+        url = url.replace(" ","%20");
+
+        JsonObjectRequest requestDetalles = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject responseDP) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"No se pudo guardar el comentario "+error.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        addToQueue(requestDetalles);
+
+    }
+
+
     private void modificarDisponibles() {
         String columna ="Disponibilidad";
         if(!isDisponiblesValid){
@@ -366,6 +390,7 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
         View v = inflater.inflate(R.layout.dialog_pedido_agregado, null);
         Button continuar = v.findViewById(R.id.btnContinuar);
+        final EditText comentario = v.findViewById(R.id.txtComentario);
 
 
         builder.setView(v);
@@ -375,6 +400,10 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(!comentario.getText().equals("")){
+                            String textoComentario = comentario.getText().toString();
+                            makeRequestInsertarComentarioPedido(responseNumber,textoComentario);
+                        }
 
                         finish();
                         Intent x = new Intent(v.getContext(), MainActivity.class);
