@@ -139,7 +139,7 @@
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/element_outline"
                         android:text="Guardar informacion"
-                        android:textColor="@color/divider" />
+                        android:textColor="#FFFFFF" />
 
                     <TextView
                         android:id="@+id/lblId"

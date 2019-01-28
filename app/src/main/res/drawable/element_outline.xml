@@ -7,7 +7,7 @@
         android:radius="5dp"/>
 
     <solid
-        android:color="@color/primary_light"/>
+        android:color="@color/primary"/>
 
     <padding
         android:left="10dp"
