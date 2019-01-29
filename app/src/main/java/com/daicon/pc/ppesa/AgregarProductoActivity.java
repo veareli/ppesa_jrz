@@ -141,7 +141,7 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
                 cant = Integer.parseInt(cantidad.getText().toString());
                 int cantDisp = Integer.valueOf(Disp);
 
-                if(cant<cantDisp){
+                if(cant<=cantDisp){
                     AlertDialog.Builder builder = new AlertDialog.Builder(AgregarProductoActivity.this);
                     builder.setMessage("Su pedido: ("+cant+") "+producto.getText().toString()+ "\n¿Esta seguro?")
                             .setTitle("Confirmar Pedido")

@@ -98,7 +98,8 @@
             android:layout_height="wrap_content"
             android:text="Subtotal"
             android:layout_marginTop="15dp"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/lblsubTotal"
@@ -107,26 +108,30 @@
             android:text="$0.00"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:visibility="invisible"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="IVA"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/lblIVA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$0.00"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:visibility="invisible"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total"
             android:layout_marginLeft="15dp"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/lblTotalDetalles"
@@ -134,7 +139,8 @@
             android:layout_height="wrap_content"
             android:text="$0.00"
             android:layout_marginLeft="15dp"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:visibility="invisible"/>
 
     </GridLayout>
 
