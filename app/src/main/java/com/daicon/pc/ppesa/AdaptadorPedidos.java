@@ -36,7 +36,7 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.fecha.setText("Fecha: " +listaPedidos.get(i).getFecha());
+        viewHolder.fecha.setText("Fecha programada: " +listaPedidos.get(i).getFecha());
         viewHolder.referencia.setText("Referencia: " +listaPedidos.get(i).getReferencia());
         viewHolder.estatus.setText("Estatus:" + listaPedidos.get(i).getEstatus());
         viewHolder.vermas.setOnClickListener(new View.OnClickListener() {

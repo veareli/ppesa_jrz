@@ -104,7 +104,7 @@ public class PedidosFragment extends BaseVolleyFragment /*implements Response.Li
 
                         if(!jsonObject.getString("Descripcion").equals("vacio")){
                             pedidos.setEstatus(jsonObject.optString("Descripcion"));
-                            pedidos.setFecha(jsonObject.optString("FechaPedido"));
+                            pedidos.setFecha(jsonObject.optString("FechaProgramada"));
                             pedidos.setReferencia(jsonObject.getString("id_Pedido"));
 
                             listaPedidos.add(pedidos);
