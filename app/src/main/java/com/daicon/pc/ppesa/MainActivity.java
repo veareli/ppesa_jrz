@@ -133,46 +133,52 @@ public class MainActivity extends BaseVolleyActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        volley = VolleyS.getInstance(this);
-        fRequestQueue = volley.getRequestQueue();
+        if(!isOnlineNet()){
+            dialogoConexion();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        }else{
 
 
-        Intent intent = getIntent();
-        ID = intent.getIntExtra("IdCliente", 0);
-        tipoCliente = intent.getIntExtra("tipoCliente", 0);
+            volley = VolleyS.getInstance(this);
+            fRequestQueue = volley.getRequestQueue();
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        fragmentLineas = new LineasFragment();
-        fragmentPerfil = new PerfilFragment();
-        pedidosFragment = new PedidosFragment();
-        buscadorFragment = new BuscadorFragment();
+            drawer = findViewById(R.id.drawer_layout);
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
 
-        Bundle args = new Bundle();
-        args.putInt("tipoCliente", tipoCliente);
-        args.putInt("IdCliente",ID);
-        fragmentLineas.setArguments(args);
-        getSupportFragmentManager().beginTransaction().add(R.id.contenedor, fragmentLineas).commit();
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        disponiblesModificados();
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
-        buscarNombreApp();
-        buscarPromocion();
-        //abrirPromocion(promocion);
 
+            Intent intent = getIntent();
+            ID = intent.getIntExtra("IdCliente", 0);
+            tipoCliente = intent.getIntExtra("tipoCliente", 0);
+
+            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav);
+            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+            fragmentLineas = new LineasFragment();
+            fragmentPerfil = new PerfilFragment();
+            pedidosFragment = new PedidosFragment();
+            buscadorFragment = new BuscadorFragment();
+
+            Bundle args = new Bundle();
+            args.putInt("tipoCliente", tipoCliente);
+            args.putInt("IdCliente",ID);
+            fragmentLineas.setArguments(args);
+            getSupportFragmentManager().beginTransaction().add(R.id.contenedor, fragmentLineas).commit();
+
+            disponiblesModificados();
+
+            buscarNombreApp();
+            buscarPromocion();
+
+        }
 
     }
 
@@ -494,6 +500,40 @@ public class MainActivity extends BaseVolleyActivity implements
             //onPreStartConnection();
             fRequestQueue.add(request);
         }
+    }
+
+    public Boolean isOnlineNet() {
+
+        try {
+            Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.es");
+
+            int val           = p.waitFor();
+            boolean reachable = (val == 0);
+            return reachable;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public AlertDialog dialogoConexion(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("No hay conexion a internet")
+                .setMessage("Para usar la aplicacion es necesaria tener una conexiona internet.")
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                //listener.onPossitiveButtonClick();
+                            }
+
+                        });
+
+        return builder.show();
     }
 
 
