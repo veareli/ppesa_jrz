@@ -35,6 +35,7 @@ import java.util.Date;
 public class ListaTemporalFragment extends BaseVolleyFragment {
     ArrayList<EventObjects> listaEventos;
     ArrayList<String> listaFechas;
+    ArrayList<String> listaFechasConFormato;
     RecyclerView recyclerViewTemporal;
     int idCliente,tipoCliente;
     double precio;
@@ -99,6 +100,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
 
     private void llenarDias(){
         listaFechas = new ArrayList<>();
+        listaFechasConFormato = new ArrayList<>();
         int diasExtra = 2;
 
 
@@ -107,8 +109,11 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
             Date date = new Date();
             calendar.setTime(date);
             calendar.add(Calendar.DAY_OF_YEAR, diasExtra+i);
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
             dateFormat.format(calendar.getTime());
+            dateFormat2.format(calendar.getTime());
+            listaFechasConFormato.add(dateFormat2.format(calendar.getTime()));
             listaFechas.add(dateFormat.format(calendar.getTime()));
 
 
@@ -139,6 +144,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
                             double factorInterno = jsonObject.optDouble("Factor");
                             //Date date=new SimpleDateFormat("dd/MM/yyyy").parse(jsonObject.optString("dia"));
                             evento.setDate(listaFechas.get(i).toString());
+                            evento.setDateConFormato(listaFechasConFormato.get(i).toString());
 
                             if(isFactorNeed){
                                 evento.setFactorValor(factorInterno);
@@ -163,7 +169,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
                                     Intent agregar = new Intent(getContext(), AgregarProductoActivity.class);
                                     Bundle b = new Bundle();
                                     b.putSerializable("producto", (Serializable) producto);
-                                    agregar.putExtra("fechaSeleccionada",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getDate());
+                                    agregar.putExtra("fechaSeleccionada",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getDateConFormato());
                                     agregar.putExtra("factorSeleccionado",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getFactorValor());
                                     agregar.putExtra("costoFinal",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getCosto());//Lleva factor
                                     agregar.putExtra("BundleProd",b);

@@ -5,6 +5,7 @@ public class EventObjects {
     private int id;
     private double factorValor;
     private String date;
+    private String dateConFormato;
     private double costo;
 
     public EventObjects(){
@@ -47,5 +48,13 @@ public class EventObjects {
 
     public void setCosto(double costo) {
         this.costo = costo;
+    }
+
+    public String getDateConFormato() {
+        return dateConFormato;
+    }
+
+    public void setDateConFormato(String dateConFormato) {
+        this.dateConFormato = dateConFormato;
     }
 }
