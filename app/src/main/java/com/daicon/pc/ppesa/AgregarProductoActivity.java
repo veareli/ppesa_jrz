@@ -63,8 +63,8 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
         Bundle b =  getIntent().getBundleExtra("BundleProd");
         idCliente = getIntent().getIntExtra("IdCliente",0);
         tipoCliente= getIntent().getIntExtra("tipoCliente",0);
-        Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        final Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         currentDate = dateFormat.format(date);
         isDisponiblesValid = getIntent().getBooleanExtra("columna",false);
 
@@ -148,6 +148,10 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
                             .setPositiveButton("Hacer pedido", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    /*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                                    Date test = new Date(selectedDate);
+                                    dateFormat.format(test);*/
+
                                     makeRequestInsertPedido();
                                 }
                             }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -181,9 +185,9 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 // +1 because january is zero
-                selectedDate = day + "/" + (month+1) + "/" + year;
+                selectedDate = year + "-" +day+ "-" + (month+1);
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 Date date = new Date();
                 currentDate = dateFormat.format(date);
                 //currentDate
@@ -405,7 +409,7 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
                             makeRequestInsertarComentarioPedido(responseNumber,textoComentario);
                         }
 
-                        finish();
+                        //finish();
                         Intent x = new Intent(v.getContext(), MainActivity.class);
                         x.putExtra("tipoCliente",tipoCliente);
                         x.putExtra("IdCliente",idCliente);
@@ -421,7 +425,7 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
     private void makeRequest() {
         Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
 
         String url =getResources().getString(R.string.url)+"/obtener_factor.php?fecha="+fechaExtra;//dateFormat.format(date);
