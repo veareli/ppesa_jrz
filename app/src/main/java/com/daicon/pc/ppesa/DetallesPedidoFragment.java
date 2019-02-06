@@ -144,10 +144,10 @@ public class DetallesPedidoFragment extends BaseVolleyFragment {
 
                     }
                     //total = factorValor*total;
-                    double ivaCalculado = Utilerias.limitarDecimales(total*0.16);
-                    totalDetalles.setText("$"+String.valueOf(Utilerias.limitarDecimales(total+ivaCalculado)));
+                    //double ivaCalculado = Utilerias.limitarDecimales(total*0.16);
+                    totalDetalles.setText("$"+String.valueOf(Utilerias.limitarDecimales(total)));
                     totalx.setText(totalDetalles.getText());
-                    iva.setText("$"+String.valueOf((ivaCalculado)));
+                    //iva.setText("$"+String.valueOf((ivaCalculado)));
                     sub.setText("$"+String.valueOf(String.valueOf((total))));
                     progressDialog.hide();
                 }catch (JSONException e) {
