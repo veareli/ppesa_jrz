@@ -35,7 +35,7 @@ public class AdaptadorDetallesPedido extends RecyclerView.Adapter<AdaptadorDetal
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         viewHolder.producto.setText(listaDetallesPedidos.get(i).getDescripcionProducto());
-        viewHolder.cantidad.setText(" X "+String.valueOf(listaDetallesPedidos.get(i).getCantidad()));
+        viewHolder.cantidad.setText(" x "+String.valueOf(listaDetallesPedidos.get(i).getCantidad()));
         viewHolder.precio.setText("$"+String.valueOf(listaDetallesPedidos.get(i).getPrecio()));
 
         double descuento= listaDetallesPedidos.get(i).getPrecio();
