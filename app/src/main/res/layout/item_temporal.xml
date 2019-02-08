@@ -45,6 +45,16 @@
                 android:visibility="invisible"
                 />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblDisponibles"
+                android:textColor="@color/primary_dark"
+                android:text="Disponibles"
+                android:textSize="10sp"
+
+                />
+
         </LinearLayout>
 
 
