@@ -42,6 +42,7 @@ public class BuscadorFragment extends BaseVolleyFragment implements SearchView.O
     ArrayList<Productos> listaProductos;
     Productos producto;
     BuscadorFragment buscadorFragment;
+    ListaTemporalFragment listaTemporalFragment;
     int idCliente,tipoCliente;
 
 
@@ -62,6 +63,7 @@ public class BuscadorFragment extends BaseVolleyFragment implements SearchView.O
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         buscadorFragment = new BuscadorFragment();
+        listaTemporalFragment = new ListaTemporalFragment();
         Bundle args = getArguments();
         idCliente = args.getInt("IdCliente");
         tipoCliente= args.getInt("tipoCliente",0);
@@ -167,17 +169,23 @@ public class BuscadorFragment extends BaseVolleyFragment implements SearchView.O
                         adapter.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent x = new Intent(getContext(), AgregarProductoActivity.class);
 
-                                Bundle b = new Bundle();
-                                b.putSerializable("producto", (Serializable) adapter.listaProductos.get((recyclerViewBuscador.getChildAdapterPosition(v))));
-                                x.putExtra("BundleProd",b);
-                                x.putExtra("IdCliente", idCliente);
-                                x.putExtra("tipoCliente",tipoCliente);
-                                x.putExtra("pantalla", "buscador");
-                                x.putExtra("columna", disponibles);
 
-                                startActivity(x);
+                                Bundle args = new Bundle();
+                                int idLinea = adapter.listaProductos.get(recyclerViewBuscador.getChildAdapterPosition(v)).getLinea();
+                                args.putDouble("precio",Double.valueOf(adapter.listaProductos.get(recyclerViewBuscador.getChildAdapterPosition(v)).getCosto()));
+                                args.putString("linea", String.valueOf(idLinea));
+                                args.putBoolean("isFactorNeed",(idLinea==1|| idLinea==2||idLinea==4)?true:false);
+                                args.putInt("IdCliente",idCliente);
+                                args.putInt("tipoCliente",tipoCliente);
+                                args.putBoolean("columna", disponibles);
+
+                                args.putSerializable("producto", (Serializable) adapter.listaProductos.get(recyclerViewBuscador.getChildAdapterPosition(v)));
+
+                                listaTemporalFragment.setArguments(args);
+
+                                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.contenedor, listaTemporalFragment).commit();
                             }
                         });
 
