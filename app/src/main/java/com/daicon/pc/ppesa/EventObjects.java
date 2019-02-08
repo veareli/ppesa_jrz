@@ -7,6 +7,7 @@ public class EventObjects {
     private String date;
     private String dateConFormato;
     private double costo;
+    private int disponibilidad;
 
     public EventObjects(){
 
@@ -56,5 +57,13 @@ public class EventObjects {
 
     public void setDateConFormato(String dateConFormato) {
         this.dateConFormato = dateConFormato;
+    }
+
+    public int getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(int disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 }
