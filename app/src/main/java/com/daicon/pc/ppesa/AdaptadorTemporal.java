@@ -31,6 +31,7 @@ public class AdaptadorTemporal extends RecyclerView.Adapter<AdaptadorTemporal.Vi
         viewHolder.precio.setText(String.valueOf(listaTemporal.get(i).getCosto()));
         viewHolder.factor.setText(String.valueOf(listaTemporal.get(i).getFactorValor()));
         viewHolder.fecha.setText(listaTemporal.get(i).getDate());
+        viewHolder.disp.setText("Disp: " +String.valueOf(listaTemporal.get(i).getDisponibilidad()));
 
     }
 
@@ -53,7 +54,7 @@ public class AdaptadorTemporal extends RecyclerView.Adapter<AdaptadorTemporal.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView fecha, factor, precio;
+        TextView fecha, factor, precio, disp;
 
 
         public ViewHolder(View itemView) {
@@ -62,6 +63,7 @@ public class AdaptadorTemporal extends RecyclerView.Adapter<AdaptadorTemporal.Vi
             fecha = itemView.findViewById(R.id.lblFechaTemp);
             factor = itemView.findViewById(R.id.lblFactorTemp);
             precio = itemView.findViewById(R.id.lblPrecioTemp);
+            disp = itemView.findViewById(R.id.lblDisponibles);
 
         }
     }
