@@ -31,7 +31,7 @@ public class AdaptadorTemporal extends RecyclerView.Adapter<AdaptadorTemporal.Vi
         viewHolder.precio.setText(String.valueOf(listaTemporal.get(i).getCosto()));
         viewHolder.factor.setText(String.valueOf(listaTemporal.get(i).getFactorValor()));
         viewHolder.fecha.setText(listaTemporal.get(i).getDate());
-        viewHolder.disp.setText(String.valueOf(listaTemporal.get(i).getDisponibilidad()));
+        viewHolder.disp.setText("Disp: " +String.valueOf(listaTemporal.get(i).getDisponibilidad()));
 
     }
 

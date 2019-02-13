@@ -84,7 +84,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
 
 
         if(!isFactorNeed){
-            categoria.setText("Dias de entrega:");
+            categoria.setText("Precios para: "+producto.getDescripcion());
 
         }
 
