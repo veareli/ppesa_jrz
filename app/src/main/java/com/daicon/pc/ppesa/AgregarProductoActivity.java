@@ -341,14 +341,17 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
 
     private void modificarDisponibles() {
-        String columna ="Disponibilidad";
+        String columna ="disponibles";
+
         if(!isDisponiblesValid){
-            columna = "Minimo";
+            columna = "disponibles";
+
         }
         String url =getResources().getString(R.string.url)+"/update_disponibles.php?idProducto="
                 +idProducto
                 +"&cantidad="+cant
-                +"&columna="+columna+"";
+                +"&columna="+columna
+                +"&dia="+selectedDate;
         url = url.replace(" ","%20");
 
         JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
