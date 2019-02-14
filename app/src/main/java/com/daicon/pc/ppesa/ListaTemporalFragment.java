@@ -178,6 +178,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
                                     agregar.putExtra("IdCliente",idCliente);
                                     agregar.putExtra("tipoCliente",tipoCliente);
                                     agregar.putExtra("columna", isDisponiblesValid);
+                                    agregar.putExtra("disponibles", listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getDisponibilidad());
 
 
                                     startActivity(agregar);

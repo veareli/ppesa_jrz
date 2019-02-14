@@ -69,12 +69,13 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
         isDisponiblesValid = getIntent().getBooleanExtra("columna",false);
 
 
+
         String pantalla = getIntent().getStringExtra("pantalla");
         if(pantalla.equals("buscador")){
 
             productoExtra = (Productos)b.getSerializable("producto");
             Producto =productoExtra.getDescripcion();
-            Disp = productoExtra.getDisponibles();
+            Disp = String.valueOf(getIntent().getIntExtra("disponibles",0));
             Costo = Double.valueOf(productoExtra.getCosto());
             idProducto = productoExtra.getID();
             selectedDate = currentDate;
@@ -83,7 +84,7 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
             productoExtra = (Productos)b.getSerializable("producto");
             Producto =productoExtra.getDescripcion();
-            Disp = productoExtra.getDisponibles();
+            Disp = String.valueOf(getIntent().getIntExtra("disponibles",0));
             Costo = getIntent().getDoubleExtra("costoFinal",0);//Desde calendario si debe considerarse el factor<-Revisar si ya considera el factor
             idProducto = productoExtra.getID();
             factorValor = getIntent().getDoubleExtra("factorSeleccionado",0);
@@ -341,10 +342,10 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
 
     private void modificarDisponibles() {
-        String columna ="disponibles";
+        String columna ="disponible";
 
         if(!isDisponiblesValid){
-            columna = "disponibles";
+            columna = "disponible";
 
         }
         String url =getResources().getString(R.string.url)+"/update_disponibles.php?idProducto="
