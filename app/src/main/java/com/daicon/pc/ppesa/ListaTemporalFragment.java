@@ -121,7 +121,8 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
     }
 
     private void makeRequest() {
-        String url =getResources().getString(R.string.url)+"/obtener_lista_factores.php?producto="+producto.getID();
+        int productoID = producto.getID();
+        String url =getResources().getString(R.string.url)+"/obtener_lista_factores.php?producto="+productoID;
         JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -145,7 +146,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
                             //Date date=new SimpleDateFormat("dd/MM/yyyy").parse(jsonObject.optString("dia"));
                             evento.setDate(listaFechas.get(i).toString());
                             evento.setDateConFormato(listaFechasConFormato.get(i).toString());
-                            evento.setDisponibilidad(jsonObject.optInt("disponible"));
+                            evento.setDisponibilidad(jsonObject.getInt("disponible"));
 
                             if(isFactorNeed){
                                 evento.setFactorValor(factorInterno);

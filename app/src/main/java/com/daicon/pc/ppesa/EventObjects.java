@@ -16,10 +16,11 @@ public class EventObjects {
         this.setFactorValor(factorValor);
         this.setDate(date);
     }
-    public EventObjects(int id, double factorValor, String date) {
+    public EventObjects(int id, double factorValor, String date, int disponibilidad) {
         this.setDate(date);
         this.setFactorValor(factorValor);
         this.setId(id);
+        this.setDisponibilidad(disponibilidad);
     }
     public int getId() {
         return id;
