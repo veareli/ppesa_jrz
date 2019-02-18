@@ -41,7 +41,7 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
             public void onClick(View v) {
                 Intent x = new Intent(v.getContext(), AgregarProductoActivity.class);
                 x.putExtra("producto",viewHolder.producto.getText());
-                x.putExtra("disp",listaProductos.get(i).getDisponibles());
+                x.putExtra("disponibles",listaProductos.get(i).getDisponibles());
                 x.putExtra("precio",listaProductos.get(i).getCosto());
                 x.putExtra("idProducto",Integer.valueOf(viewHolder.id.getText().toString()));
                 v.getContext().startActivity(x);

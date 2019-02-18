@@ -101,7 +101,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
     private void llenarDias(){
         listaFechas = new ArrayList<>();
         listaFechasConFormato = new ArrayList<>();
-        int diasExtra = 2;
+        int diasExtra = 3;
 
 
         for(int i= 0;i<45;i++){
@@ -144,9 +144,9 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
 
                             double factorInterno = jsonObject.optDouble("Factor");
                             //Date date=new SimpleDateFormat("dd/MM/yyyy").parse(jsonObject.optString("dia"));
-                            evento.setDate(listaFechas.get(i).toString());
-                            evento.setDateConFormato(listaFechasConFormato.get(i).toString());
-                            evento.setDisponibilidad(jsonObject.getInt("disponible"));
+                            evento.setDate(listaFechas.get(i));
+                            evento.setDateConFormato(listaFechasConFormato.get(i));
+                            evento.setDisponibilidad(jsonObject.optInt("disponible"));
 
                             if(isFactorNeed){
                                 evento.setFactorValor(factorInterno);
@@ -171,7 +171,9 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
                                     Intent agregar = new Intent(getContext(), AgregarProductoActivity.class);
                                     Bundle b = new Bundle();
                                     b.putSerializable("producto", (Serializable) producto);
-                                    agregar.putExtra("fechaSeleccionada",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getDateConFormato());
+                                    String fecha =listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getDate();
+                                    agregar.putExtra("fechaSeleccionada",fecha);
+                                    agregar.putExtra("fechaSinFormato",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getDateConFormato());
                                     agregar.putExtra("factorSeleccionado",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getFactorValor());
                                     agregar.putExtra("costoFinal",listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getCosto());//Lleva factor
                                     agregar.putExtra("BundleProd",b);
@@ -179,6 +181,7 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
                                     agregar.putExtra("IdCliente",idCliente);
                                     agregar.putExtra("tipoCliente",tipoCliente);
                                     agregar.putExtra("columna", isDisponiblesValid);
+                                    agregar.putExtra("disponibles", listaEventos.get(recyclerViewTemporal.getChildAdapterPosition(v)).getDisponibilidad());
 
 
                                     startActivity(agregar);
