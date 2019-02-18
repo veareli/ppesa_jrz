@@ -121,7 +121,8 @@ public class ListaTemporalFragment extends BaseVolleyFragment {
     }
 
     private void makeRequest() {
-        String url =getResources().getString(R.string.url)+"/obtener_lista_factores.php?producto="+producto.getID();
+        int productoID = producto.getID();
+        String url =getResources().getString(R.string.url)+"/obtener_lista_factores.php?producto="+productoID;
         JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
