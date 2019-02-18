@@ -41,6 +41,7 @@
                     android:layout_gravity="right"
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="10dp"
+                    android:visibility="invisible"
                     />
 
                 <TextView
@@ -52,6 +53,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
+                    android:visibility="invisible"
                     />
                 <!--<TextView
                     android:id="@+id/lblPrecioCalendario"

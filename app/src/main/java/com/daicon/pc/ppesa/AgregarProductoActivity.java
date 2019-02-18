@@ -49,7 +49,7 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
     double costofinal = 0;
     boolean insertExitoso = false;
     MyDbHelper dbHelper;
-    String fechaExtra, currentDate, selectedDate;
+    String fechaExtra, currentDate, selectedDate, fechaSinFormato;
     int responseNumber = 0;
     boolean isDisponiblesValid;
 
@@ -90,6 +90,7 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
             factorValor = getIntent().getDoubleExtra("factorSeleccionado",0);
             Costo =Utilerias.limitarDecimales(Costo);
             selectedDate = getIntent().getStringExtra("fechaSeleccionada");
+            fechaSinFormato = getIntent().getStringExtra("fechaSinFormato");
             descuento = 0;
         }
         if(pantalla.equals("promo")){
@@ -212,12 +213,24 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
 
     private void makeRequestInsertPedido() {
-        String url =getResources().getString(R.string.url)+"/insert_pedidos.php?costoFinal="
+        /*String url =getResources().getString(R.string.url)+"/insert_pedidos.php?costoFinal="
                 +Utilerias.limitarDecimales(Costo*cant)
                 +"&fechaPedido="+currentDate
                 +"&fechaProgramada="+selectedDate
                 +"&estatus=S"
-                +"&cliente="+idCliente+"";
+                +"&cliente="+idCliente+"";*/
+        String url =getResources().getString(R.string.url)+"/insert_pedidos.php?costoFinal="
+                +Utilerias.limitarDecimales(Costo*cant)
+                +"&fechaPedido="+currentDate
+                +"&fechaProgramada="+fechaSinFormato
+                +"&estatus=S"
+                +"&cliente="+idCliente
+                +"&idproducto="+idProducto
+                +"&cant="+Integer.valueOf(cantidad.getText().toString())
+                +"&precio="+Costo
+                +"&promocion="+descuento
+                +"&factor="+factorValor;
+        //Utilerias.limitarDecimales(Costo*Integer.valueOf(cantidad.getText().toString()));
         url = url.replace(" ","%20");
 
         JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
@@ -232,10 +245,28 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
 
                         jsonObject = json.getJSONObject(i);
 
-                        responseNumber = jsonObject.optInt("MAX(id_Pedido)");
+                        //responseNumber = jsonObject.optInt("MAX(id_Pedido)");
+                        boolean respuesta;
+                        respuesta = jsonObject.optBoolean("insertIsSuccessful");
 
-                        if(responseNumber !=0)
-                            insertarDetallesPedido();
+                        if(respuesta){
+                            responseNumber = jsonObject.optInt("idProducto");
+                            createCustomDialog().show();
+                        }else{
+                            finish();
+
+                            Intent main = new Intent(getApplicationContext(), MainActivity.class);
+
+                            main.putExtra("IdCliente", idCliente);
+                            main.putExtra("tipoCliente",tipoCliente);
+                            startActivity(main);
+
+                            Toast.makeText(getApplicationContext(),"No se pudo guardar tu pedido. Intentalo mas tarde",Toast.LENGTH_LONG).show();
+
+
+                        }
+
+
                     }
                 }catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), "No se pudo conectar "+response, Toast.LENGTH_LONG).show();
@@ -251,69 +282,6 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
             }
         });
         addToQueue(request);
-
-    }
-
-    private void insertarDetallesPedido() {
-
-        makeRequestInsertarDetallesPedido(responseNumber,
-                idProducto,
-                Integer.valueOf(cantidad.getText().toString()),
-                Costo,
-                descuento,
-                factorValor,
-                Utilerias.limitarDecimales(Costo*Integer.valueOf(cantidad.getText().toString()))
-        );
-    }
-
-    private void makeRequestInsertarDetallesPedido(int pedido, int producto, int cant, double precio, double desc, double fac, double costoFin ) {
-
-        String url =getResources().getString(R.string.url)+"/insert_detalles_pedidos.php?idPedido="+pedido
-                +"&idProducto="+producto
-                +"&cantidad="+cant
-                +"&precio="+precio
-                +"&promocion="+desc
-                +"&factor="+fac
-                +"&costoFinal="+costoFin;
-        url = url.replace(" ","%20");
-
-        JsonObjectRequest requestDetalles = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject responseDP) {
-                JSONArray json = responseDP.optJSONArray("detallepedidos");
-
-                try {
-
-                    for(int i=0; i < json.length(); i++){
-                        JSONObject jsonObject = null;
-
-                        jsonObject = json.getJSONObject(i);
-
-                        insertExitoso = jsonObject.optBoolean("detallepedidos");
-
-                    }
-                }catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "No se pudo conectar "+e.getMessage(), Toast.LENGTH_LONG).show();
-                    //e.printStackTrace();
-                }
-
-                if(insertExitoso){
-                    modificarDisponibles();
-
-                    //agregar update disponibles
-
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"No se pudo realizar el pedido "+error.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        addToQueue(requestDetalles);
 
     }
 
@@ -339,7 +307,6 @@ public class AgregarProductoActivity extends BaseVolleyActivity implements Linea
         addToQueue(requestDetalles);
 
     }
-
 
     private void modificarDisponibles() {
         String columna ="disponible";
